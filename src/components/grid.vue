@@ -4,8 +4,6 @@
       class="name"
       @mouseenter="activate('first')"
       @mouseleave="deactivate('first')"
-      @touchstart="activate('first')"
-      @touchend="deactivate('first')"
     >
       <h1>Sam Garson</h1>
     </div>
@@ -19,8 +17,6 @@
           href="mailto:sam@samgarson.com"
           @mouseenter="activate('last')"
           @mouseleave="deactivate('last')"
-          @touchstart="activate('last')"
-          @touchend="deactivate('last')"
         >Get in touch</a>
       </p>
     </div>
@@ -77,8 +73,13 @@ export default {
   margin: 20vh auto 0;
   width: 95vw;
   height: 60vh;
-  display: grid;
-  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-flow: row wrap;
+
+  & > * {
+    flex: 1 1 25%;
+    height: percentage(1/3);
+  }
 }
 
 .name {
@@ -123,7 +124,10 @@ export default {
     height: 100vh;
     width: 100vw;
     margin: 0 auto;
-    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+
+    & > * {
+      flex: 1 1 percentage(1/3);
+    }
   }
 
   .dot-wrapper:nth-child(7) ~ .dot-wrapper {
@@ -131,7 +135,7 @@ export default {
   }
 
   .desc {
-    grid-column-end: span 2;
+    flex-basis: percentage(2/3);
 
     p {
       right: 25%;

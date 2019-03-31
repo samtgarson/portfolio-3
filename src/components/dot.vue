@@ -30,8 +30,7 @@ import {
   DOT_FACTOR,
   HALO_FACTOR,
   HALO_RADIUS,
-  MOUSEMOVE,
-  TOUCHMOVE
+  MOUSEMOVE
 } from '@/assets/constants'
 
 const getCenter = t => {
@@ -71,17 +70,13 @@ export default {
     i: Number
   },
   mounted () {
-    this.listeners = {
-      MOUSEMOVE: decouple(this.$el, MOUSEMOVE, this.onMouseMove.bind(this)),
-      TOUCHMOVE: decouple(this.$el, TOUCHMOVE, this.onMouseMove.bind(this))
-    }
+    this.listener = decouple(this.$el, MOUSEMOVE, this.onMouseMove.bind(this))
   },
   computed: {
   },
   beforeDestroy () {
     if (!this.listener) return
-    this.$el.removeEventListener(MOUSEMOVE, this.listeners[MOUSEMOVE])
-    this.$el.removeEventListener(TOUCHMOVE, this.listeners[TOUCHMOVE])
+    this.$el.removeEventListener(MOUSEMOVE, this.listener)
   },
   methods: {
     onMouseMove (e) {
