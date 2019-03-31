@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "name": "samtgarson",
+  "alias": [
+    "samgarson.com",
+    "samgarson.xyz"
+  ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ]
+}
