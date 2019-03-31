@@ -4,17 +4,35 @@
     height="100%"
     viewBox="0 0 100 100"
     class="dot-wrapper"
+    :class="{ active: active && !entering }"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
     <circle cx="50" cy="50" r="3" fill="white" ref="dot" />
-    <circle cx="50" cy="50" r="1" stroke="white" stroke-width="0.5" fill="none" ref="halo" />
+    <circle
+      cx="50"
+      cy="50"
+      r="1"
+      stroke="white"
+      stroke-width="0.5"
+      fill="none"
+      ref="halo"
+      class="halo"
+      :class="`delay-${i}`"
+    />
   </svg>
 </template>
 
 <script>
 import decouple from 'decouple'
 import anime from 'animejs'
+import {
+  DOT_FACTOR,
+  HALO_FACTOR,
+  HALO_RADIUS,
+  MOUSEMOVE,
+  TOUCHMOVE
+} from '@/assets/constants'
 
 const getCenter = t => {
   const {
@@ -36,17 +54,21 @@ const getDelta = ({ target, clientX: x, clientY: y }) => {
   }
 }
 
-const DOT_FACTOR = 20
-const HALO_FACTOR = 8
-const HALO_RADIUS = 15
-const MOUSEMOVE = 'mousemove'
-const TOUCHMOVE = 'touchmove'
-
 export default {
   data () {
     return {
-      listeners: {}, entering: Promise.resolve(), dotLeaving: false, haloLeaving: false
+      listeners: {},
+      entering: false,
+      dotLeaving: false,
+      haloLeaving: false
     }
+  },
+  props: {
+    active: {
+      type: Boolean,
+      default: false
+    },
+    i: Number
   },
   mounted () {
     this.listeners = {
@@ -62,13 +84,12 @@ export default {
     this.$el.removeEventListener(TOUCHMOVE, this.listeners[TOUCHMOVE])
   },
   methods: {
-    async onMouseMove (e) {
+    onMouseMove (e) {
       const { dx, dy } = getDelta(e)
+      const cx = (dx / DOT_FACTOR) + 50
+      const cy = (dy / DOT_FACTOR) + 50
 
-      anime.set(this.$refs.dot, {
-        cx: (dx / DOT_FACTOR) + 50,
-        cy: (dy / DOT_FACTOR) + 50
-      })
+      anime.set(this.$refs.dot, { cx, cy })
 
       const haloParams = {
         cx: (dx / HALO_FACTOR) + 50,
@@ -88,9 +109,14 @@ export default {
       })
 
       this.entering = halo
+      await halo.finished
+      this.entering = false
     },
-    async onMouseLeave () {
-      if (this.entering) this.entering.pause()
+    onMouseLeave () {
+      if (this.entering) {
+        this.entering.pause()
+        this.entering = false
+      }
       this.dotLeaving = anime({
         targets: this.$refs.dot,
         cx: 50,
@@ -114,31 +140,27 @@ export default {
 <style lang="scss" scoped>
 .dot-wrapper {
   position: relative;
+
+  &.active .halo {
+    animation: 2s linear infinite rotate
+  }
 }
 
 circle {
   pointer-events: none;
 }
 
-// .dot,
-// .halo {
-//   border-radius: 100px;
-//   position: absolute;
-//   left: 50%;
-//   top: 50%;
-// }
+.halo {
+  transform-origin: 51% 51%;
+}
 
-// .dot {
-//   width: 10px;
-//   height: 10px;
-//   margin-top: -5px;
-//   margin-left: -5px;
-//   background-color: white;
-// }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
 
-// .halo {
-//   width: 0px;
-//   height: 0px;
-//   border: 1px solid white;
-// }
+  to {
+    transform: rotate(360deg)
+  }
+}
 </style>

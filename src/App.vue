@@ -47,4 +47,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+
+@for $i from 0 through 12 {
+  .delay-#{$i} {
+    animation-delay: 100ms * $i !important;
+  }
+}
 </style>
