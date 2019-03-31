@@ -87,12 +87,10 @@ export default {
         duration: 1500
       })
 
-      this.entering = halo.finished
-      await this.entering
-      this.entering = false
+      this.entering = halo
     },
     async onMouseLeave () {
-      await (this.entering || Promise.resolve())
+      if (this.entering) this.entering.pause()
       this.dotLeaving = anime({
         targets: this.$refs.dot,
         cx: 50,
