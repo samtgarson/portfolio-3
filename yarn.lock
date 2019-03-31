@@ -1196,7 +1196,7 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-animejs@~3:
+animejs@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/animejs/-/animejs-3.0.1.tgz#8b808bad575e3b6106489d8b04b92bc4062166fe"
   integrity sha512-7mMoBQScvA7s4zm3EVgnuXXrtOu6TJNAhU+Ajo7HsXYH0NwbuZIcRHMO65a9NyUlmAXz4VPxlK5cENNOQbCi8g==
@@ -2536,6 +2536,11 @@ decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+
+decouple@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/decouple/-/decouple-1.0.1.tgz#042e61b2840473f5cc9534797bedfea6dd1a8a51"
+  integrity sha1-BC5hsoQEc/XMlTR5e+3+pt0ailE=
 
 deep-equal@^1.0.1:
   version "1.0.1"
@@ -7826,13 +7831,6 @@ vm-browserify@0.0.4:
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
-
-vue-animejs@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/vue-animejs/-/vue-animejs-2.1.1.tgz#26057e59c9410283419c77526da5241d1d0fc465"
-  integrity sha512-m+PTCXuCprvLVntQmpVo0StewYb0P0SKxaHBCOWm44ShjCN+IZMJrJfhZFSwaIRv34eG1boH3UqzH45speXirA==
-  dependencies:
-    animejs "~3"
 
 vue-cli-plugin-style-resources-loader@^0.1.3:
   version "0.1.3"
