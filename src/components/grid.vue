@@ -11,7 +11,7 @@
     <div class="desc">
       <p>
         <span>Product management</span>
-        <span>Tech Leadership</span>
+        <span>Tech Culture</span>
         <span>Digital Strategy</span>
         <a
           href="mailto:sam@samgarson.com"
@@ -38,7 +38,7 @@ export default {
     }
   },
   methods: {
-    activate (from = 'start') {
+    activate (from = 'first') {
       this.active = true
       if (this.deactivating) this.deactivating.pause()
       this.activating = anime({
