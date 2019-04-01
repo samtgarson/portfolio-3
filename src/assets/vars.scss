@@ -1,7 +1,11 @@
-$blue: #0B41AD;
-$pink: #EEBFAF;
+$blue: #051DA3;
+
+@mixin mobile {
+  @media screen and (max-width: 400px) {
+    @content;
+  }
+}
 
 :export {
   blue: $blue;
-  pink: $pink;
 }

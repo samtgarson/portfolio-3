@@ -5,6 +5,15 @@ module.exports = {
       patterns: [
         'src/assets/vars.scss'
       ]
+    },
+    prerenderSpa: {
+      registry: undefined,
+      renderRoutes: [
+        '/'
+      ],
+      useRenderEvent: true,
+      headless: true,
+      onlyProduction: true
     }
   }
 }

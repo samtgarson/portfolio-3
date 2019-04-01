@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "portfolio-3",
+  "alias": [
+    "samgarson.com",
+    "samgarson.xyz"
+  ],
+  "builds": [
+    {
+      "src": "./dist/**",
+      "use": "@now/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/$1"
+    }
+  ]
+}
