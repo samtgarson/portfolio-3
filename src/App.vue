@@ -53,4 +53,9 @@ body {
     animation-delay: 100ms * $i !important;
   }
 }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
 </style>

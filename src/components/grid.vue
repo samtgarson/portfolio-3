@@ -7,7 +7,28 @@
     >
       <h1>Sam Garson</h1>
     </div>
-    <dot v-for="i in 10" :key="i" :active="!!active" :i="i"/>
+    <dot :key="0" :active="!!active" :i="0"/>
+    <dot :key="1" :active="!!active" :i="1"/>
+    <div class="links">
+      <p>
+        <a
+          href="https://github.com/samtgarson"
+          @mouseenter="activate(2)"
+          @mouseleave="deactivate(2)"
+        >Code <external-arrow /></a>
+        <a
+          href="https://twitter.com/samtgarson"
+          @mouseenter="activate(2)"
+          @mouseleave="deactivate(2)"
+        >Comments <external-arrow /></a>
+        <a
+          href="https://instagram.com/samtgarson"
+          @mouseenter="activate(2)"
+          @mouseleave="deactivate(2)"
+        >Pictures <external-arrow /></a>
+      </p>
+    </div>
+    <dot v-for="i in 8" :key="i + 2" :active="!!active" :i="i"/>
     <div class="desc">
       <p>
         <span>Product management</span>
@@ -17,7 +38,7 @@
           href="mailto:sam@samgarson.com"
           @mouseenter="activate('last')"
           @mouseleave="deactivate('last')"
-        >Get in touch</a>
+        >Get in touch <external-arrow /></a>
       </p>
     </div>
   </div>
@@ -26,10 +47,11 @@
 <script>
 import anime from 'animejs'
 import Dot from './dot'
+import ExternalArrow from './external-arrow'
 import { LARGE_HALO_RADIUS } from '@/assets/constants'
 
 export default {
-  components: { Dot },
+  components: { Dot, ExternalArrow },
   data () {
     return {
       active: false,
@@ -95,27 +117,45 @@ export default {
   }
 }
 
-.desc {
+.desc,
+.links {
   position: relative;
 
   p {
     position: absolute;
-    margin: 0 -5px -5px 0;
-    right: 50%;
-    bottom: 50%;
-    text-align: right;
-    // line-height: 1;
     font-size: 14px;
   }
 
   span, a {
     display: block;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   a {
-    color: white;
-    text-decoration: underline;
     margin-top: 5px;
+  }
+}
+
+.desc p {
+  margin: 0 -5px -5px 0;
+  right: 50%;
+  bottom: 50%;
+  text-align: right;
+}
+
+.links p {
+  text-align: left;
+  left: 50%;
+  top: 50%;
+  margin: -5px 0 0 -5px;
+}
+
+@include not-mobile {
+  .dot-wrapper:nth-child(2) {
+    display: none;
   }
 }
 
@@ -139,6 +179,12 @@ export default {
 
     p {
       right: 25%;
+    }
+  }
+
+  .links {
+    p {
+      white-space: nowrap;
     }
   }
 }
