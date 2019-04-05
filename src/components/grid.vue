@@ -10,22 +10,11 @@
     <dot :key="0" :active="!!active" :i="0"/>
     <dot :key="1" :active="!!active" :i="1"/>
     <div class="links">
-      <p>
-        <a
-          href="https://github.com/samtgarson"
-          @mouseenter="activate(2)"
-          @mouseleave="deactivate(2)"
-        >Code <external-arrow /></a>
-        <a
-          href="https://twitter.com/samtgarson"
-          @mouseenter="activate(2)"
-          @mouseleave="deactivate(2)"
-        >Comments <external-arrow /></a>
-        <a
-          href="https://instagram.com/samtgarson"
-          @mouseenter="activate(2)"
-          @mouseleave="deactivate(2)"
-        >Pictures <external-arrow /></a>
+      <p @mouseenter="activate(2)" @mouseleave="deactivate(2)">
+        <a href="https://github.com/samtgarson">Code <external-arrow /></a>
+        <a href="https://twitter.com/samtgarson">Comments <external-arrow /></a>
+        <a href="https://instagram.com/samtgarson">Pictures <external-arrow /></a>
+        <a href="https://lessons.samgarson.com">Lessons Learned <external-arrow /></a>
       </p>
     </div>
     <dot v-for="i in 8" :key="i + 2" :active="!!active" :i="i"/>
@@ -120,6 +109,7 @@ export default {
 .desc,
 .links {
   position: relative;
+  z-index: 1;
 
   p {
     position: absolute;
@@ -128,6 +118,7 @@ export default {
 
   span, a {
     display: block;
+    white-space: nowrap;
 
     &:first-child {
       margin-top: 0;
@@ -179,12 +170,6 @@ export default {
 
     p {
       right: 25%;
-    }
-  }
-
-  .links {
-    p {
-      white-space: nowrap;
     }
   }
 }
