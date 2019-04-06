@@ -11,10 +11,10 @@
     <dot :key="1" :active="!!active" :i="1"/>
     <div class="links">
       <p @mouseenter="activate(2)" @mouseleave="deactivate(2)">
-        <a target="_blank" href="https://github.com/samtgarson">Code <external-arrow /></a>
-        <a target="_blank" href="https://twitter.com/samtgarson">Comments <external-arrow /></a>
-        <a target="_blank" href="https://instagram.com/samtgarson">Pictures <external-arrow /></a>
-        <a target="_blank" href="https://lessons.samgarson.com">Lessons Learned <external-arrow /></a>
+        <a rel="noopener" target="_blank" href="https://github.com/samtgarson">Code <external-arrow /></a>
+        <a rel="noopener" target="_blank" href="https://twitter.com/samtgarson">Comments <external-arrow /></a>
+        <a rel="noopener" target="_blank" href="https://instagram.com/samtgarson">Pictures <external-arrow /></a>
+        <a rel="noopener" target="_blank" href="https://lessons.samgarson.com">Lessons Learned <external-arrow /></a>
       </p>
     </div>
     <dot v-for="i in 8" :key="i + 2" :active="!!active" :i="i"/>
