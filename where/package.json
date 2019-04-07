@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-3-where",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "micro-dev"
+  },
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "micro": "^9.3.3",
+    "micro-dev": "^3.0.0"
+  }
+}
