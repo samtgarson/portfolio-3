@@ -3,8 +3,7 @@ module.exports = data => {
   const { createdAt, venue, isMayor } = checkin
   return {
     createdAt,
-    place: venue.name,
-    url: `https://foursquare.com/v/${venue.id}`,
+    venue,
     isMayor
   }
 }

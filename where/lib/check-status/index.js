@@ -1,6 +1,6 @@
 module.exports = response => {
   if (response.ok) {
-    return response
+    return response.json()
   }
   const error = new Error(response.statusText)
   error.response = response

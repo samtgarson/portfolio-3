@@ -4,8 +4,9 @@ module.exports.respondPlace = res => body => {
   res.end(JSON.stringify(body))
 }
 
-module.exports.respondError = res => ({ message = 'Something went wrong.' }) => {
+module.exports.respondError = res => ({ stack, message = 'Something went wrong.' }) => {
   res.statusCode = 500
   const body = { error: message }
+  if (process.env.NODE_ENV === 'development') body.stack = stack
   res.end(JSON.stringify(body))
 }
