@@ -6,13 +6,24 @@
     "www.samgarson.com",
     "samgarson.xyz"
   ],
+  "env": {
+    "FOURSQUARE_TOKEN": "@foursquare-token"
+  },
   "builds": [
     {
       "src": "./dist/**",
       "use": "@now/static"
+    },
+    {
+      "src": "./where/index.js",
+      "use": "@now/node"
     }
   ],
   "routes": [
+    {
+      "src": "/where",
+      "dest": "/where"
+    },
     {
       "src": "/(.*)",
       "dest": "dist/$1"
