@@ -15,12 +15,3 @@
     <polyline points="7 7 17 7 17 17"></polyline>
   </svg>
 </template>
-
-<script>
-export default {
-}
-</script>
-
-<style>
-
-</style>
