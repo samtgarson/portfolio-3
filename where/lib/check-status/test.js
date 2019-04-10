@@ -6,10 +6,10 @@ const okResponse = {
   json: jest.fn(() => json)
 }
 
-const statusText = 'I am a status text'
+const errorDetail = 'I am a status text'
 const failedResponse = {
   ok: false,
-  statusText
+  json: () => Promise.resolve({ meta: { errorDetail } })
 }
 
 let result
@@ -35,7 +35,7 @@ describe('check status', () => {
     it('contains the status text and original response', () => {
       expect(result).rejects.toMatchObject({
         response: failedResponse,
-        message: statusText
+        message: `Foursquare error: ${errorDetail}`
       })
     })
   })

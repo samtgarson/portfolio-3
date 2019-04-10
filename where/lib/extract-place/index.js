@@ -1,5 +1,9 @@
 module.exports = data => {
-  const checkin = data.response.checkins.items[1]
+  if (data.response.checkins.items.length === 0) {
+    throw new Error('No checkins found.')
+  }
+
+  const [checkin] = data.response.checkins.items
   const { createdAt, venue, isMayor } = checkin
   return {
     createdAt: createdAt * 1000,

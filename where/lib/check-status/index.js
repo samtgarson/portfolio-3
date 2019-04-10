@@ -1,8 +1,14 @@
+/* eslint-disable promise/prefer-await-to-then */
 module.exports = response => {
   if (response.ok) {
     return response.json()
   }
-  const error = new Error(response.statusText)
-  error.response = response
-  return Promise.reject(error)
+
+  return new Promise(
+    (resolve, reject) => response.json().then(body => {
+      const error = new Error(`Foursquare error: ${body.meta.errorDetail}`)
+      error.response = response
+      return reject(error)
+    })
+  )
 }
