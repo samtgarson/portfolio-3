@@ -7,26 +7,32 @@
     "samgarson.xyz"
   ],
   "env": {
-    "FOURSQUARE_TOKEN": "@foursquare-token"
+    "FOURSQUARE_TOKEN": "@foursquare-token",
+  },
+  "build": {
+    "env": {
+      "VUE_APP_CHECKIN_URL": "/api/where"
+    }
   },
   "builds": [
     {
-      "src": "./dist/**",
-      "use": "@now/static"
+      "src": "./app/package.json",
+      "use": "@now/static-build"
     },
     {
-      "src": "./where/index.js",
+      "src": "./api/where/index.js",
       "use": "@now/node"
+    },
     }
   ],
   "routes": [
     {
-      "src": "/where",
-      "dest": "/where"
+      "src": "^/api/where",
+      "dest": "/api/where/index.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "dist/$1"
+      "src": "^/(.*)",
+      "dest": "/app/$1"
     }
   ]
 }
