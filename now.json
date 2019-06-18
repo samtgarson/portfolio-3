@@ -8,6 +8,8 @@
   ],
   "env": {
     "FOURSQUARE_TOKEN": "@foursquare-token",
+    "NOTION_TOKEN": "@notion_token",
+    "NOTION_URL": "https://www.notion.so/samtgarson/7b02e22d86404179bafeeaa5c23b26cd?v=c22cc1a23cc34d4286532b840ed52dc6"
   },
   "build": {
     "env": {
@@ -23,9 +25,19 @@
       "src": "./api/where/index.js",
       "use": "@now/node"
     },
+    {
+      "src": "./api/content/index.py",
+      "use": "@now/python",
+      "config": {
+        "maxLambdaSize": "10mb"
+      }
     }
   ],
   "routes": [
+    {
+      "src": "^/api/content(/.*)?",
+      "dest": "/api/content/index.py"
+    },
     {
       "src": "^/api/where",
       "dest": "/api/where/index.js"
