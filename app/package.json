@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "now-dev": "vue-cli-service serve --port=$PORT",
-    "now-build": "vue-cli-service config && vue-cli-service build",
+    "now-build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -36,14 +36,8 @@
     "sass-loader": "^7.1.0",
     "style-resources-loader": "^1.2.1",
     "vue-cli-plugin-meta": "^0.1.1",
-    "vue-cli-plugin-prerender-spa": "^1.1.5",
     "vue-cli-plugin-style-resources-loader": "^0.1.3",
     "vue-template-compiler": "^2.5.21"
-  },
-  "vuePlugins": {
-    "service": [
-      "config.service.js"
-    ]
   },
   "eslintConfig": {
     "root": true,
