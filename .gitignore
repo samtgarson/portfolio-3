@@ -19,3 +19,6 @@ yarn-error.log*
 *.sw*
 
 .now
+
+dist/
+__pycache__/

@@ -11,11 +11,6 @@
     "NOTION_TOKEN": "@notion_token",
     "NOTION_URL": "https://www.notion.so/samtgarson/7b02e22d86404179bafeeaa5c23b26cd?v=c22cc1a23cc34d4286532b840ed52dc6"
   },
-  "build": {
-    "env": {
-      "VUE_APP_CHECKIN_URL": "/api/where"
-    }
-  },
   "builds": [
     {
       "src": "./app/package.json",

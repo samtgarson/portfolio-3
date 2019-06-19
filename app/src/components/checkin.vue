@@ -19,7 +19,7 @@ export default {
   },
   async mounted () {
     try {
-      const response = await fetch(process.env.VUE_APP_CHECKIN_URL)
+      const response = await fetch('/api/where')
       if (!response || !response.ok) return
       this.data = await response.json()
     } catch (e) {

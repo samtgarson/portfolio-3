@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "now-dev": "vue-cli-service serve --port=$PORT",
-    "now-build": "vue-cli-service build",
+    "now-build": "vue-cli-service config && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
     "babel-eslint": "^10.0.1",
+    "chrome-aws-lambda": "^1.17.1",
     "eslint": "^5.0.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-import-resolver-jest": "^2.1.1",
@@ -29,6 +30,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-vue": "^5.0.0",
+    "iltorb": "^2.4.3",
     "prerender-spa-plugin": "^3.2.1",
     "sass": "^1.17.3",
     "sass-loader": "^7.1.0",
@@ -37,6 +39,11 @@
     "vue-cli-plugin-prerender-spa": "^1.1.5",
     "vue-cli-plugin-style-resources-loader": "^0.1.3",
     "vue-template-compiler": "^2.5.21"
+  },
+  "vuePlugins": {
+    "service": [
+      "config.service.js"
+    ]
   },
   "eslintConfig": {
     "root": true,

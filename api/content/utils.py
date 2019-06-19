@@ -54,9 +54,12 @@ def __get_block_keys(block):
 
 
 def serialise_block(block):
+    base = {"type": block.type}
+    if block.__class__.__name__ is "Block":
+        return base
+
     keys = __get_block_keys(block)
     attrs = {k: getattr(block, k) for k in keys if not callable(getattr(block, k))}
-    base = {"type": block.type}
     if attrs:
         base["attributes"] = attrs
 
@@ -71,6 +74,7 @@ def serialise_children(block):
     attrs = serialise_block(block)
     if children:
         attrs["children"] = children
+
     if hasattr(block, "title"):
         attrs["content"] = block.title
 
