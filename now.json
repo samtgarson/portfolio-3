@@ -17,6 +17,10 @@
       "use": "@now/static-build"
     },
     {
+      "src": "./client/package.json",
+      "use": "@now/static-build"
+    },
+    {
       "src": "./api/where/index.js",
       "use": "@now/node"
     },
@@ -36,6 +40,10 @@
     {
       "src": "^/api/where",
       "dest": "/api/where/index.js"
+    },
+    {
+      "src": "^/v2/(.*)",
+      "dest": "/client/$1"
     },
     {
       "src": "^/(.*)",

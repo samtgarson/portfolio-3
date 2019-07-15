@@ -1,11 +1,13 @@
+import Sass from 'sass'
+
+const customSass = {
+  implementation: Sass
+}
 
 export default {
   mode: 'universal',
-  /*
-  ** Headers of the page
-  */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Sam Garson',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -15,34 +17,25 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
   css: [
+    'modern-normalize/modern-normalize.css',
+    '@/assets/base.scss'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources',
+    'nuxt-purgecss'
   ],
-  /*
-  ** Build configuration
-  */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
+    loaders: {
+      scss: customSass
     }
+  },
+  styleResources: {
+    scss: ['@/assets/vars.scss']
+  },
+  purgeCSS: {
+    enabled: ({ isDev, isClient }) => (!isDev && isClient)
   }
 }
