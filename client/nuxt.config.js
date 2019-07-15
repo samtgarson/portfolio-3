@@ -32,6 +32,9 @@ export default {
       scss: customSass
     }
   },
+  router: {
+    base: process.env.PUBLIC_PATH || '/'
+  },
   styleResources: {
     scss: ['@/assets/vars.scss']
   },

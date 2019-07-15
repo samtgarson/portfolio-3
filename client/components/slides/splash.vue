@@ -2,7 +2,7 @@
   <slide id="splash">
     <div class="wrapper">
       <div class="intro">
-        <h1>Sam Garson</h1>
+        <name />
         <ul>
           <li>Product Management</li>
           <li>Tech Leadership</li>
@@ -18,9 +18,10 @@
 
 <script>
 import Slide from '../slide'
+import Name from '../name'
 
 export default {
-  components: { Slide }
+  components: { Slide, Name }
 }
 </script>
 
