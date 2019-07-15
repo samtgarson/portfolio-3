@@ -7,26 +7,39 @@
     "samgarson.xyz"
   ],
   "env": {
-    "FOURSQUARE_TOKEN": "@foursquare-token"
+    "FOURSQUARE_TOKEN": "@foursquare-token",
+    "NOTION_TOKEN": "@notion_token",
+    "NOTION_URL": "https://www.notion.so/samtgarson/7b02e22d86404179bafeeaa5c23b26cd?v=c22cc1a23cc34d4286532b840ed52dc6"
   },
   "builds": [
     {
-      "src": "./dist/**",
-      "use": "@now/static"
+      "src": "./app/package.json",
+      "use": "@now/static-build"
     },
     {
-      "src": "./where/index.js",
+      "src": "./api/where/index.js",
       "use": "@now/node"
+    },
+    {
+      "src": "./api/content/index.py",
+      "use": "@now/python",
+      "config": {
+        "maxLambdaSize": "10mb"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/where",
-      "dest": "/where"
+      "src": "^/api/content(/.*)?",
+      "dest": "/api/content/index.py"
     },
     {
-      "src": "/(.*)",
-      "dest": "dist/$1"
+      "src": "^/api/where",
+      "dest": "/api/where/index.js"
+    },
+    {
+      "src": "^/(.*)",
+      "dest": "/app/$1"
     }
   ]
 }
