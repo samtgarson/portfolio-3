@@ -22,8 +22,10 @@ export default {
     'modern-normalize/modern-normalize.css',
     '@/assets/base.scss'
   ],
+  plugins: [
+    { src: '@/plugins/raf', mode: 'client' }
+  ],
   modules: [
-    '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     'nuxt-purgecss'
   ],

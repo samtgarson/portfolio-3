@@ -2,7 +2,6 @@
   <slide id="splash">
     <div class="wrapper">
       <div class="intro">
-        <name />
         <ul>
           <li>Product Management</li>
           <li>Tech Leadership</li>
@@ -10,7 +9,7 @@
         </ul>
       </div>
       <div class="illustration">
-        <img src="https://s3-us-west-2.amazonaws.com/figma-alpha-api/img/16f3/e2cf/fee0b5801289303d01ebe9e531c482f6"></img>
+        <img src="@/assets/img/sitting.svg"></img>
       </div>
     </div>
   </slide>
@@ -18,10 +17,10 @@
 
 <script>
 import Slide from '../slide'
-import Name from '../name'
 
 export default {
-  components: { Slide, Name }
+  name: 'Splash',
+  components: { Slide }
 }
 </script>
 
@@ -32,32 +31,56 @@ export default {
 }
 
 .wrapper {
-  display: flex;
-  flex-flow: row nowrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 2fr;
+  height: 100%;
+
+  @media (max-width: 650px) {
+    grid-template-rows: 1fr 3fr;
+  }
 }
 
 .illustration {
-  flex: 0 0 45%;
+  grid-area: 1 / 2 / 3 / 2;
+  text-align: right;
 }
 
 .intro {
-  flex: 0 0 55%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  padding: 30px 0;
+  grid-area: 2 / 1 / 2 / 3;
 }
 
 ul {
   padding: 0;
+  margin: 0;
+  border: 1px solid white;
+  padding: $padding;
+  height: auto;
+
+  @media (max-width: 650px) {
+    padding: $padding / 2;
+  }
 }
 
 li {
   list-style-type: none;
+  line-height: 1em;
+  margin-bottom: $padding / 2;
+
+  @media (min-width: 650px) {
+    font-size: 28px;
+  }
+  @media (max-width: 400px) {
+    font-size: 16px;
+  }
 }
 
 img {
   max-width: 100%;
-  transform: scaleX(-1);
+  max-height: 100%;
+
+  @media (min-width: 650px) {
+    transform: scaleX(-1);
+  }
 }
 </style>

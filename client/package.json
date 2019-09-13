@@ -37,8 +37,9 @@
     "sass-loader": "^7.1.0"
   },
   "eslintConfig": {
-    "extend": [
-      "@samtgarson"
-    ]
+    "extends": "@samtgarson",
+    "rules": {
+      "no-console": "off"
+    }
   }
 }
