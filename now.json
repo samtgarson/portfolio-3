@@ -13,24 +13,19 @@
   },
   "build": {
     "env": {
-      "PUBLIC_PATH": "/v2/"
     }
   },
   "builds": [
     {
-      "src": "./app/package.json",
+      "src": "client/package.json",
       "use": "@now/static-build"
     },
     {
-      "src": "./client/package.json",
-      "use": "@now/static-build"
-    },
-    {
-      "src": "./api/where/index.js",
+      "src": "api/where/index.js",
       "use": "@now/node"
     },
     {
-      "src": "./api/content/index.py",
+      "src": "api/content/index.py",
       "use": "@now/python",
       "config": {
         "maxLambdaSize": "10mb"
@@ -47,12 +42,8 @@
       "dest": "/api/where/index.js"
     },
     {
-      "src": "^/v2/(.*)",
-      "dest": "/client/$1"
-    },
-    {
       "src": "^/(.*)",
-      "dest": "/app/$1"
+      "dest": "/client/$1"
     }
   ]
 }

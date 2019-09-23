@@ -1,9 +1,10 @@
-@import './vars.scss';
+@import '~assets/vars.scss';
+@import '~assets/fonts.scss';
 
 html,
 body {
   font-family: $font-family;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 18px;
   letter-spacing: 0.2px;
   line-height: 1.5;
@@ -20,6 +21,7 @@ h4 {
 
 h1 {
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
 }
+
