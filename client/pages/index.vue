@@ -1,13 +1,14 @@
 <template>
-  <main ref="main" class="container">
+  <main ref="main" class="container" :class="{ horizontal: !touch }">
     <component :is="comp" v-for="(comp, index) in components" ref="slides" :key="`${comp.name}${index}`" />
-    <component :is="components[0]" ref="lastSlide" />
+    <component :is="components[0]" ref="lastSlide" v-if="!touch" />
   </main>
 </template>
 
 <script>
 /* eslint-disable no-console */
-import createBus from '@/assets/bus'
+import createBus from '@/services/bus'
+import touchDevice from '@/services/touch-device'
 import Splash from '@/components/slides/splash'
 import Contact from '@/components/slides/contact'
 
@@ -17,14 +18,16 @@ export default {
   data() {
     return {
       xMax: null,
-      components: [Splash, Contact]
+      components: [Splash, Contact],
+      touch: false
     }
   },
-  provide: {
-    bus
-  },
   mounted() {
-    this.$once('hook:beforeDestroy', bus.stop)
+    this.touch = touchDevice()
+
+    if (this.touch) return
+
+    this.$once('hook:beforeDestroy', () => bus.stop())
 
     bus.$on('resized', this.updateResize)
     bus.$on('scrolled', this.updateScroll)
@@ -33,11 +36,13 @@ export default {
   },
   methods: {
     updateResize() {
+      const slides = this.$el.querySelectorAll('.slide')
+      const lastSlide = slides[slides.length - 1]
+      
       const page = this.$refs.main
       const w = page.scrollWidth - window.innerWidth + window.innerHeight
       document.body.style.height = w + 'px'
 
-      const lastSlide = this.$refs.lastSlide.$el
       this.xMax = lastSlide.getBoundingClientRect().left + window.scrollY
       this.resized = false
     },
@@ -61,18 +66,22 @@ export default {
 
 <style lang="scss" scoped>
 main {
-  display: flex;
-  flex-flow: row nowrap;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  white-space: nowrap;
+  &.horizontal {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 
 .slide {
   flex: 0 0 100vw;
+
+  display: flex;
 }
 </style>

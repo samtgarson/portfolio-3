@@ -35,6 +35,12 @@ section {
   top: 0;
   bottom: 0;
   pointer-events: none;
+
+  // fix for iOS  https://stackoverflow.com/a/28640880
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    clip: auto;
+    -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
+  }
 }
 
 article {
