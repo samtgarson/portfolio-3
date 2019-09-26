@@ -9,7 +9,10 @@ import Slide from '../slide'
 
 export default {
   name: 'Contact',
-  components: { Slide }
+  components: { Slide },
+  provide: {
+    title: 'Testing'
+  }
 }
 </script>
 

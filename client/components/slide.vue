@@ -1,11 +1,11 @@
 <template>
   <section class="slide">
-    <article>
-      <slot />
-    </article>
     <div class="name-wrapper">
       <name />
     </div>
+    <article>
+      <slot />
+    </article>
   </section>
 </template>
 
@@ -25,6 +25,13 @@ section {
   align-items: center;
   justify-content: center;
   position: relative;
+  color: $base;
+  background-color: white;
+
+  &.primary {
+    background-color: $base;
+    color: white;
+  }
 }
 
 .name-wrapper {

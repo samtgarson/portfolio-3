@@ -1,10 +1,10 @@
 <template>
-  <slide id="splash">
+  <slide id="splash" class="primary">
     <div class="wrapper">
       <div class="intro">
         <ul>
-          <li>Product Management</li>
           <li>Tech Leadership</li>
+          <li>Product Management</li>
           <li>Digital Strategy</li>
         </ul>
       </div>
@@ -25,11 +25,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.slide {
-  background-color: $base;
-  color: white;
-}
-
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
