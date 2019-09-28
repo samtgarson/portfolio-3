@@ -26,11 +26,14 @@ section {
   justify-content: center;
   position: relative;
   color: $base;
-  background-color: white;
+  background-color: $white;
 
   &.primary {
     background-color: $base;
-    color: white;
+
+    &, * {
+      color: $white;
+    }
   }
 }
 
@@ -42,6 +45,9 @@ section {
   top: 0;
   bottom: 0;
   pointer-events: none;
+  * {
+    pointer-events: auto;
+  }
 
   // fix for iOS  https://stackoverflow.com/a/28640880
   @media screen and (-webkit-min-device-pixel-ratio:0) {

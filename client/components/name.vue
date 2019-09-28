@@ -1,12 +1,32 @@
 <template>
   <nav class="name">
-    <h1>Sam Garson</h1>
-    <h2>{{ title }}</h2>
+    <div class="main">
+      <h1>Sam Garson</h1>
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="secondary">
+      <a href="https://github.com/samtgarson">
+        <github-icon size="0.9x" />
+      </a>
+      <a href="https://twitter.com/samtgarson">
+        <twitter-icon size="0.9x" />
+      </a>
+      <a href="https://instagram.com/samtgarson">
+        <instagram-icon size="0.9x" />
+      </a>
+    </div>
   </nav>
 </template>
 
 <script>
+import { GithubIcon, InstagramIcon, TwitterIcon } from 'vue-feather-icons'
+
 export default {
+  components: {
+    GithubIcon,
+    InstagramIcon,
+    TwitterIcon
+  },
   inject: {
     title: { default: 'Hey there' }
   }
@@ -18,8 +38,29 @@ nav {
   position: fixed;
   top: $padding;
   left: $padding;
+  right: $padding;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+h1,
+h2 {
+  &::before {
+    content: '';
+    display: inline-block;
+    background-color: $base;
+    vertical-align: middle;
+
+    .primary & {
+      background-color: $white;
+    }
+  }
 }
 
 $circle-size: .6em;
@@ -27,17 +68,10 @@ h1 {
   line-height: 1em;
 
   &::before {
-    content: '';
-    display: inline-block;
     margin-right: $circle-size;
     height: $circle-size;
     width: $circle-size;
     border-radius: 50px;
-    background-color: $base;
-
-    .primary & {
-      background-color: white;
-    }
   }
 }
 
@@ -47,17 +81,15 @@ h2 {
   font-size: 1rem;
 
   &::before {
-    content: '';
-    display: inline-block;
     height: 1px;
     width: $padding * 3;
-    background-color: $base;
     margin: 0 $padding/2;
-    vertical-align: middle;
+  }
+}
 
-    .primary & {
-      background-color: white;
-    }
+.secondary { 
+  svg {
+    margin-left: $padding / 2;
   }
 }
 </style>

@@ -48,7 +48,7 @@ export default {
 ul {
   padding: 0;
   margin: 0;
-  border: 1px solid white;
+  border: 1px solid $white;
   padding: $padding;
   height: auto;
 
