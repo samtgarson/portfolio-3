@@ -1,8 +1,6 @@
 <template>
   <section class="slide">
-    <div class="name-wrapper">
-      <name />
-    </div>
+    <frame />
     <article>
       <slot />
     </article>
@@ -10,10 +8,10 @@
 </template>
 
 <script>
-import Name from './name'
+import Frame from './frame'
 
 export default {
-  components: { Name }
+  components: { Frame }
 }
 </script>
 
@@ -37,25 +35,6 @@ section {
   }
 }
 
-.name-wrapper {
-  clip: rect(0, auto, auto, 0);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  pointer-events: none;
-  * {
-    pointer-events: auto;
-  }
-
-  // fix for iOS  https://stackoverflow.com/a/28640880
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    clip: auto;
-    -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
-  }
-}
-
 article {
   width: 100%;
   max-width: 800px;
@@ -66,10 +45,6 @@ article {
 
   @media (max-width: 650px) {
     padding: $padding / 2;
-  }
-
-  @media (max-width: 400px) {
-    // height: auto;
   }
 }
 </style>
