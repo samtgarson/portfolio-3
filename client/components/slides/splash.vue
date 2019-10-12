@@ -29,9 +29,12 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 2fr;
-  height: 100%;
 
-  @media (max-width: 650px) {
+  @include big {
+    height: 100%;
+  }
+
+  @include small {
     grid-template-rows: 1fr 3fr;
   }
 }

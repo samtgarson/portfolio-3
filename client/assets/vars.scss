@@ -2,3 +2,70 @@ $base: #1502FF;
 $white: #e7e7e5;
 $padding: 30px;
 $font-family: "VulfSans", sans-serif;
+$small-breakpoint: 650px;
+$slide-height: 450px + ($padding * 2);
+
+@mixin colour {
+  @content($base, $white);
+
+  .primary & {
+    @content($white, $base);
+  }
+}
+
+@mixin big {
+  @media (min-width: $small-breakpoint + 1px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: $small-breakpoint) {
+    @content;
+  }
+}
+
+@mixin line($position: 'before') {
+  &::#{$position} {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 1px;
+    width: $padding * 3;
+    margin: 0 $padding/2;
+    @include colour using ($col, $_) {
+      background-color: $col;
+    }
+  }
+}
+
+@mixin dot($circle-size: 1em, $position: 'after') {
+  &::#{$position} {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: $circle-size;
+    width: $circle-size;
+    border-radius: 50px;
+    @include colour using ($col, $_) {
+      background-color: $col;
+    }
+
+    @content($circle-size);
+  }
+}
+
+@mixin text-stroke($colour) {
+  @supports (-webkit-text-stroke: 1px $colour) or (text-stroke: 1px $colour) {
+    text-stroke: 1px $colour;
+    -webkit-text-stroke: 1px $colour;
+  }
+
+  @supports not ((-webkit-text-stroke: 1px $colour) or (text-stroke: 1px $colour)) {
+    text-shadow:
+      -1px -1px 0 $colour,
+       1px -1px 0 $colour,
+       -1px 1px 0 $colour,
+        1px 1px 0 $colour;
+  }
+}

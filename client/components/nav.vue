@@ -6,13 +6,13 @@
     </div>
     <div class="secondary">
       <a href="https://github.com/samtgarson">
-        <github-icon size="0.9x" />
+        <github-icon size="1x" />
       </a>
       <a href="https://twitter.com/samtgarson">
-        <twitter-icon size="0.9x" />
+        <twitter-icon size="1x" />
       </a>
       <a href="https://instagram.com/samtgarson">
-        <instagram-icon size="0.9x" />
+        <instagram-icon size="1x" />
       </a>
     </div>
   </nav>
@@ -49,29 +49,10 @@ nav {
   flex-flow: row nowrap;
 }
 
-h1,
-h2 {
-  &::before {
-    content: '';
-    display: inline-block;
-    background-color: $base;
-    vertical-align: middle;
-
-    .primary & {
-      background-color: $white;
-    }
-  }
-}
-
-$circle-size: .6em;
 h1 {
   line-height: 1em;
-
-  &::before {
+  @include dot($circle-size: .9rem, $position: 'before') using ($circle-size) {
     margin-right: $circle-size;
-    height: $circle-size;
-    width: $circle-size;
-    border-radius: 50px;
   }
 }
 
@@ -79,17 +60,21 @@ h2 {
   font-weight: 300;
   font-style: italic;
   font-size: 1rem;
+  @include line;
 
-  &::before {
-    height: 1px;
-    width: $padding * 3;
-    margin: 0 $padding/2;
+  @include small {
+    display: none;
   }
 }
 
 .secondary { 
   svg {
     margin-left: $padding / 2;
+  }
+
+  @include small {
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

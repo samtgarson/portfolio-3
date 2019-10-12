@@ -1,6 +1,9 @@
 <template>
   <div class="frame">
     <top-nav />
+    <footer>
+      <a href="#">Get in touch</a>
+    </footer>
   </div>
 </template>
 
@@ -30,6 +33,39 @@ export default {
   @media screen and (-webkit-min-device-pixel-ratio:0) {
     clip: auto;
     -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
+  }
+}
+
+footer {
+  position: fixed;
+  right: $padding / 2;
+  width: 100vh;
+  height: $padding;
+  padding: 0 $padding;
+  bottom: -$padding;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  transform: rotate(90deg);
+  transform-origin: 100% 0%;
+
+  @include dot($circle-size: 0.7rem);
+
+  & > :last-child {
+    @include big {
+      @include line($position: 'after');
+    }
+
+    @include small {
+      margin-right: $padding / 2; 
+    }
+  }
+
+
+  a {
+    text-decoration: none;
+    font-weight: 300;
   }
 }
 </style>

@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -27,24 +27,27 @@ section {
   background-color: $white;
 
   &.primary {
+    color: $white;
     background-color: $base;
-
-    &, * {
-      color: $white;
-    }
   }
 }
 
 article {
   width: 100%;
   max-width: 800px;
-  height: 100%;
+  min-height: 100%;
   min-height: 400px;
-  max-height: 450px + ($padding * 2);
-  padding: $padding;
+  padding: $padding $padding*2;
 
-  @media (max-width: 650px) {
-    padding: $padding / 2;
+  @include big {
+    max-height: $slide-height;
+  }
+
+  @include small {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $padding;
   }
 }
 </style>
