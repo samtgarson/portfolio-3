@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .frame {
+  z-index: 100;
   clip: rect(0, auto, auto, 0);
   position: absolute;
   left: 0;

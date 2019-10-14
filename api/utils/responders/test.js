@@ -1,16 +1,17 @@
-const { respondError, respondPlace } = require('./')
+const { respondError, respondImages } = require('./')
 
 const _res = () => ({
   setHeader: jest.fn(),
   end: jest.fn()
 })
-const body = { foo: 'bar' }
+const body = [{ foo: 'bar' }, { baz: 'boop' }]
 
 let res
-describe('respondPlace', () => {
+describe('respondImages', () => {
   beforeEach(() => {
     res = _res()
-    respondPlace(res)(body)
+    req = {}
+    respondImages(req, res)(body)
   })
 
   it('sets the cache control header', () => {

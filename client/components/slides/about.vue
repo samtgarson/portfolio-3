@@ -1,5 +1,5 @@
 <template>
-<slide>
+<slide id="about">
   <div class="wrapper">
     <div class="illustration">
       <img src="@/assets/img/standing.svg"></img>
@@ -19,7 +19,7 @@
 import Slide from '../slide'
 
 export default {
-  name: 'Contact',
+  name: 'About',
   components: { Slide },
   provide: {
     title: 'How\'s it going?'
@@ -33,15 +33,13 @@ h3 {
   text-transform: uppercase;
   transform-origin: 0 50%;
   transform: scaleX(1.2);
-  @include colour() using ($bg, $text) {
-    color: $text;
-    @include text-stroke($bg);
-  }
+  @include text-stroke;
 }
 
 .wrapper {
   display: flex;
   align-items: center;
+  @debug 'here';
 }
 
 .illustration {

@@ -1,15 +1,29 @@
 $base: #1502FF;
+$dark: darken($base, 20%);
 $white: #e7e7e5;
+$pink: #E576C6;
 $padding: 30px;
 $font-family: "VulfSans", sans-serif;
 $small-breakpoint: 650px;
 $slide-height: 450px + ($padding * 2);
 
-@mixin colour {
+@function selector($selector, $self) {
+  @if $self {
+    @return "&.#{$selector}";
+  } @else {
+    @return ".#{$selector} &";
+  }
+}
+
+@mixin colour($self: false) {
   @content($base, $white);
 
-  .primary & {
+  #{selector('primary', $self)} {
     @content($white, $base);
+  }
+
+  #{selector('accent', $self)} {
+    @content($dark, $pink);
   }
 }
 
@@ -55,17 +69,21 @@ $slide-height: 450px + ($padding * 2);
   }
 }
 
-@mixin text-stroke($colour) {
-  @supports (-webkit-text-stroke: 1px $colour) or (text-stroke: 1px $colour) {
-    text-stroke: 1px $colour;
-    -webkit-text-stroke: 1px $colour;
-  }
+@mixin text-stroke {
+  @include colour() using ($bg, $text) {
+    color: $text;
 
-  @supports not ((-webkit-text-stroke: 1px $colour) or (text-stroke: 1px $colour)) {
-    text-shadow:
-      -1px -1px 0 $colour,
-       1px -1px 0 $colour,
-       -1px 1px 0 $colour,
-        1px 1px 0 $colour;
+    @supports (-webkit-text-stroke: 1px $bg) or (text-stroke: 1px $bg) {
+      text-stroke: 1px $bg;
+      -webkit-text-stroke: 1px $bg;
+    }
+
+    @supports not ((-webkit-text-stroke: 1px $bg) or (text-stroke: 1px $bg)) {
+      text-shadow:
+        -1px -1px 0 $bg,
+         1px -1px 0 $bg,
+         -1px 1px 0 $bg,
+          1px 1px 0 $bg;
+    }
   }
 }

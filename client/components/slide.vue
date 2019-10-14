@@ -1,5 +1,5 @@
 <template>
-  <section class="slide">
+  <section class="slide" :class="{ primary, accent }">
     <frame />
     <article>
       <slot />
@@ -11,7 +11,11 @@
 import Frame from './frame'
 
 export default {
-  components: { Frame }
+  components: { Frame },
+  props: {
+    primary: { type: Boolean, default: false },
+    accent: { type: Boolean, default: false },
+  }
 }
 </script>
 
@@ -26,9 +30,9 @@ section {
   color: $base;
   background-color: $white;
 
-  &.primary {
-    color: $white;
-    background-color: $base;
+  @include colour(true) using ($text, $bg) {
+    color: $text;
+    background-color: $bg;
   }
 }
 
@@ -40,7 +44,7 @@ article {
   padding: $padding $padding*2;
 
   @include big {
-    max-height: $slide-height;
+    max-height: 450px + ($padding * 2);
   }
 
   @include small {

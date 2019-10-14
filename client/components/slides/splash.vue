@@ -1,5 +1,5 @@
 <template>
-  <slide id="splash" class="primary">
+  <slide id="splash" primary>
     <div class="wrapper">
       <div class="intro">
         <ul>

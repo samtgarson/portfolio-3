@@ -25,6 +25,10 @@
       "use": "@now/node"
     },
     {
+      "src": "api/insta/index.js",
+      "use": "@now/node"
+    },
+    {
       "src": "api/content/index.py",
       "use": "@now/python",
       "config": {
@@ -38,8 +42,8 @@
       "dest": "/api/content/index.py"
     },
     {
-      "src": "^/api/where",
-      "dest": "/api/where/index.js"
+      "src": "^/api/(.*)",
+      "dest": "/api/$1/index.js"
     },
     {
       "src": "^/(.*)",

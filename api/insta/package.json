@@ -1,0 +1,20 @@
+{
+  "name": "portfolio-3-insta",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development micro-dev --port=3001",
+    "test": "jest"
+  },
+  "dependencies": {
+    "jsdom": "^15.1.1",
+    "micro-cors": "^0.1.1",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^7.0.0",
+    "jest": "^24.7.1",
+    "micro": "^9.3.3",
+    "micro-dev": "^3.0.0"
+  }
+}

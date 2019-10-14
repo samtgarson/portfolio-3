@@ -10,7 +10,8 @@
 import createBus from '@/services/bus'
 import touchDevice from '@/services/touch-device'
 import Splash from '@/components/slides/splash'
-import Contact from '@/components/slides/contact'
+import About from '@/components/slides/about'
+import Pictures from '@/components/slides/pictures'
 
 const bus = createBus()
 
@@ -18,7 +19,7 @@ export default {
   data() {
     return {
       xMax: null,
-      components: [Splash, Contact],
+      components: [Splash, About, Pictures],
       touch: false
     }
   },
