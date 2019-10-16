@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-3",
+  "private": true,
+  "workspaces": [
+    "api/**",
+    "client"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1"
+  },
+  "jest": {
+    "testMatch": [
+      "**/test.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/.now"
+    ]
+  }
+}

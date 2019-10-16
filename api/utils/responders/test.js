@@ -1,4 +1,4 @@
-const { respondError, respondImages } = require('./')
+const { respondError, respondSuccess } = require('./')
 
 const _res = () => ({
   setHeader: jest.fn(),
@@ -7,11 +7,11 @@ const _res = () => ({
 const body = [{ foo: 'bar' }, { baz: 'boop' }]
 
 let res
-describe('respondImages', () => {
+describe('respondSuccess', () => {
   beforeEach(() => {
     res = _res()
     req = {}
-    respondImages(req, res)(body)
+    respondSuccess(req, res)(body)
   })
 
   it('sets the cache control header', () => {

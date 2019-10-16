@@ -1,0 +1,9 @@
+{
+  "name": "@portfolio-3/utils",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "micro-cors": "^0.1.1"
+  }
+}
+

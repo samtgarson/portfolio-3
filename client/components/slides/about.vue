@@ -39,7 +39,6 @@ h3 {
 .wrapper {
   display: flex;
   align-items: center;
-  @debug 'here';
 }
 
 .illustration {

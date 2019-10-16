@@ -1,4 +1,4 @@
-# portfolio-3
+**portfolio-3**_—another iteration of a personal profile site_
 
 ## Project setup
 ```

@@ -1,4 +1,3 @@
-const { JSDOM } = require('jsdom')
 const { INSTA_URL } = require('../fetch-images')
 
 module.exports = async html => {
