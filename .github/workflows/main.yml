@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+
+    - uses: docker://node:10
+      name: install-and-test
+      run: |
+        yarn install --frozen-lockfile
+        yarn test
