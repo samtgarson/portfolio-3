@@ -12,6 +12,6 @@ jobs:
 
     - uses: docker://node:10
       name: install-and-test
-      run: |
-        yarn install --frozen-lockfile
-        yarn test
+      with:
+        entrypoint: yarn
+        args: install --frozen-lockfile
