@@ -6,7 +6,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import createBus from '@/services/bus'
 import touchDevice from '@/services/touch-device'
 import Splash from '@/components/slides/splash'

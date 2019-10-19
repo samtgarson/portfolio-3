@@ -38,7 +38,7 @@ section {
 
 article {
   width: 100%;
-  max-width: 800px;
+  max-width: $max-width;
   min-height: 100%;
   min-height: 400px;
   padding: $padding $padding*2;

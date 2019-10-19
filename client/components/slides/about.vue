@@ -1,11 +1,9 @@
 <template>
 <slide id="about">
   <div class="wrapper">
-    <div class="illustration">
-      <img src="@/assets/img/standing.svg"></img>
-    </div>
+    <img src="@/assets/img/standing.svg" class="illustration"></img>
     <div class="info">
-      <h3>Hey there</h3>
+      <h3>Hey there!</h3>
       <p>👋 Sam here. I'm a product focused tech lead in London, currently helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture and model to support them.</p>
       <p>I'm learning about digital products, the teams that build them and how they change our society; and in particular how to create an environment in which effective and considered digital work can be done.</p>
       <p>I've been lucky enough to experience product development at all levels—from strategy, transformation and innovation, through user experience and architecture down to pixels and code.</p>
@@ -29,11 +27,8 @@ export default {
 
 <style scoped lang="scss">
 h3 {
-  font-size: 3rem;
-  text-transform: uppercase;
-  transform-origin: 0 50%;
-  transform: scaleX(1.2);
-  @include text-stroke;
+  @include title;
+  @include stretch;
 }
 
 .wrapper {
@@ -42,14 +37,9 @@ h3 {
 }
 
 .illustration {
-  flex: 1 1 33%;
-  max-height: $slide-height;
-  padding: $padding*2 $padding*2 $padding*2 0;
-
-  img {
-    height: 100%;
-    width: 100%;
-  }
+  flex: 1 1 25%;
+  max-height: $slide-height - $padding*2;
+  padding: $padding*2 $padding $padding*2 0;
 
   @include small {
     display: none;
@@ -57,7 +47,7 @@ h3 {
 }
 
 .info {
-  flex: 2 0 66%;
+  flex: 2 1 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;

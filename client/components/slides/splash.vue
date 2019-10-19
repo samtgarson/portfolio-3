@@ -1,15 +1,13 @@
 <template>
   <slide id="splash" primary>
     <div class="wrapper">
-      <div class="intro">
-        <ul>
-          <li>Tech Leadership</li>
-          <li>Product Management</li>
-          <li>Digital Strategy</li>
-        </ul>
-      </div>
       <div class="illustration">
         <img src="@/assets/img/sitting.svg"></img>
+      </div>
+      <div class="intro">
+        <repeat-text text="Tech Lead" />
+        <repeat-text text="Product Manager" :odd="false" />
+        <repeat-text text="Digital Strategy" />
       </div>
     </div>
   </slide>
@@ -17,10 +15,11 @@
 
 <script>
 import Slide from '../slide'
+import RepeatText from '../repeat-text'
 
 export default {
   name: 'Splash',
-  components: { Slide }
+  components: { Slide, RepeatText }
 }
 </script>
 
@@ -35,50 +34,29 @@ export default {
   }
 
   @include small {
-    grid-template-rows: 1fr 3fr;
+    display: flex;
+    align-items: center;
   }
 }
 
 .illustration {
   grid-area: 1 / 2 / 3 / 2;
   text-align: right;
+  z-index: 20;
 }
 
 .intro {
   grid-area: 2 / 1 / 2 / 3;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-  border: 1px solid $white;
-  padding: $padding;
-  height: auto;
-
-  @media (max-width: 650px) {
-    padding: $padding / 2;
-  }
-}
-
-li {
-  list-style-type: none;
-  line-height: 1em;
-  margin-bottom: $padding / 2;
-
-  @media (min-width: 650px) {
-    font-size: 28px;
-  }
-  @media (max-width: 400px) {
-    font-size: 16px;
-  }
+  overflow-x: hidden;
+  position: relative;
 }
 
 img {
   max-width: 100%;
   max-height: 100%;
 
-  @media (min-width: 650px) {
-    transform: scaleX(-1);
+  @include small {
+    display: none;
   }
 }
 </style>

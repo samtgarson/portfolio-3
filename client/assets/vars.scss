@@ -1,3 +1,4 @@
+$max-width: 1000px;
 $base: #1502FF;
 $dark: darken($base, 20%);
 $white: #e7e7e5;
@@ -71,11 +72,16 @@ $slide-height: 450px + ($padding * 2);
 
 @mixin text-stroke {
   @include colour() using ($bg, $text) {
-    color: $text;
+    color: transparent;
 
     @supports (-webkit-text-stroke: 1px $bg) or (text-stroke: 1px $bg) {
       text-stroke: 1px $bg;
       -webkit-text-stroke: 1px $bg;
+
+      @include small {
+        text-stroke: 0.5px $bg;
+        -webkit-text-stroke: 0.5px $bg;
+      }
     }
 
     @supports not ((-webkit-text-stroke: 1px $bg) or (text-stroke: 1px $bg)) {
@@ -87,3 +93,21 @@ $slide-height: 450px + ($padding * 2);
     }
   }
 }
+
+@mixin title {
+  font-weight: bold;
+  font-size: 3rem;
+  text-transform: uppercase;
+  @include text-stroke;
+
+  @include small {
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+  }
+}
+
+@mixin stretch {
+  transform-origin: 0 50%;
+  transform: scaleX(1.2);
+}
+
