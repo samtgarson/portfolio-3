@@ -7,6 +7,7 @@ $padding: 30px;
 $font-family: "VulfSans", sans-serif;
 $small-breakpoint: 650px;
 $slide-height: 450px + ($padding * 2);
+$stretch-factor: 1.2;
 
 @function selector($selector, $self) {
   @if $self {
@@ -106,8 +107,10 @@ $slide-height: 450px + ($padding * 2);
   }
 }
 
-@mixin stretch {
-  transform-origin: 0 50%;
-  transform: scaleX(1.2);
+@mixin stretch($align: 'left') {
+  transform: scaleX($stretch-factor);
+  @if $align = 'left' {
+    transform-origin: 0 50%;
+  }
 }
 

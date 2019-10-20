@@ -1,6 +1,6 @@
 <template>
-  <p class="repeat-text" :class="{ odd }">
-    <span v-for="i in 7">{{ text }}</span>
+  <p class="repeat-text" :class="fill">
+    <span :class="classForItem(i)" v-for="i in number">{{ text }}</span>
   </p>
 </template>
 
@@ -8,7 +8,13 @@
 export default {
   props: {
     text: { type: String, required: true },
-    odd: { type: Boolean, default: false }
+    fill: { type: String, default: 'left' },
+    number: { type: Number, default: 7 }
+  },
+  methods: {
+    classForItem (i) {
+      return { center: i === Math.ceil(number / 2) }
+    }
   }
 }
 </script>
@@ -17,7 +23,13 @@ export default {
 p {
   margin: 0;
   white-space: nowrap;
-  @include stretch;
+  &.left {
+    @include stretch($align: 'left');
+  }
+
+  &.center {
+    @include stretch($align: 'center');
+  }
 }
 
 span {
@@ -26,8 +38,11 @@ span {
   flex-shrink: 0;
   margin-right: $padding / 4;
 
-  &:first-child {
-    color: $white;
+  .repeat-text.left &:first-child,
+  .repeat-text.center &.center {
+    @include colour using ($text, $bg) {
+      color: $text;
+    }
   }
 }
 </style>

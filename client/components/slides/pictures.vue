@@ -13,6 +13,11 @@
         :title="picture.location"
       ></a>
     </li>
+    <li class="more">
+      <a href="https://instagram.com/samtgarson">
+        <span>More</span>
+      </a>
+    </li>
   </ul>
 </slide>
 </template>
@@ -20,12 +25,13 @@
 <script>
 import { get } from 'axios'
 import Slide from '../slide'
+import RepeatText from '../repeat-text'
 
 const pictures = Array(6).fill({ loading: true })
 
 export default {
   name: 'Pictures',
-  components: { Slide },
+  components: { Slide, RepeatText },
   provide: {
     title: 'Pictures'
   },
@@ -33,7 +39,7 @@ export default {
   async mounted () {
     try {
       const { data } = await get('/api/insta')
-      this.pictures = data.slice(0, 6);
+      this.pictures = data.slice(0, 5);
     } catch (e) {
       this.failed = true
     }
@@ -73,9 +79,29 @@ export default {
 li {
   list-style-type: none;
   position: relative;
-  background-color: $white;
+
+  &:not(.more) {
+    background-color: $white;
+  }
 
   &.loading {
+  }
+
+  &.more a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $dark;
+    overflow: hidden;
+
+    span {
+      @include title;
+      @include stretch($align: 'center');
+    }
+
+    &:hover span {
+      color: $dark;
+    }
   }
 }
 
@@ -86,5 +112,6 @@ a {
   left: 0;
   right: 0;
   background-size: cover;
+  text-decoration: none;
 }
 </style>
