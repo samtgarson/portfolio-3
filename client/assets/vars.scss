@@ -109,7 +109,7 @@ $stretch-factor: 1.2;
 
 @mixin stretch($align: 'left') {
   transform: scaleX($stretch-factor);
-  @if $align = 'left' {
+  @if $align == 'left' {
     transform-origin: 0 50%;
   }
 }

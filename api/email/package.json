@@ -1,0 +1,13 @@
+{
+  "name": "@portfolio-3/email",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "@portfolio-3/utils": "0.0.1",
+    "mailgun-js": "^0.22.0",
+    "node-fetch": "^2.3.0"
+  }
+}

@@ -2,7 +2,8 @@ const { respondError, respondSuccess } = require('./')
 
 const _res = () => ({
   setHeader: jest.fn(),
-  end: jest.fn()
+  status: jest.fn(),
+  json: jest.fn()
 })
 const body = [{ foo: 'bar' }, { baz: 'boop' }]
 
@@ -10,8 +11,12 @@ let res
 describe('respondSuccess', () => {
   beforeEach(() => {
     res = _res()
-    req = {}
+    req = { method: 'GET' }
     respondSuccess(req, res)(body)
+  })
+
+  it('it sets the content type', () => {
+    expect(res.setHeader).toHaveBeenCalledWith('Content-Type', 'application/json')
   })
 
   it('sets the cache control header', () => {
@@ -19,11 +24,11 @@ describe('respondSuccess', () => {
   })
 
   it('sets the status', () => {
-    expect(res.statusCode).toEqual(200)
+    expect(res.status).toHaveBeenCalledWith(200)
   })
 
   it('ends the response', () => {
-    expect(res.end).toHaveBeenCalledWith(JSON.stringify(body))
+    expect(res.json).toHaveBeenCalledWith(body)
   })
 })
 
@@ -43,10 +48,10 @@ describe('respondError', () => {
   })
 
   it('sets the status', () => {
-    expect(res.statusCode).toEqual(500)
+    expect(res.status).toHaveBeenCalledWith(500)
   })
 
   it('ends the response', () => {
-    expect(res.end).toHaveBeenCalledWith(JSON.stringify({ error: error.message }))
+    expect(res.json).toHaveBeenCalledWith({ error: error.message })
   })
 })
