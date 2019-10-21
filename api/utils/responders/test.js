@@ -6,29 +6,41 @@ const _res = () => ({
   json: jest.fn()
 })
 const body = [{ foo: 'bar' }, { baz: 'boop' }]
+const status = 518 // I am a teapot
 
 let res
 describe('respondSuccess', () => {
-  beforeEach(() => {
-    res = _res()
-    req = { method: 'GET' }
-    respondSuccess(req, res)(body)
+  const allArgs = [{ body }, { body, status }]
+
+  allArgs.forEach(args => {
+    const description = Object.keys(args).join(', ') 
+    describe(`when passed ${description}`, () => {
+      beforeEach(() => {
+        res = _res()
+        const req = { method: 'GET' }
+        respondSuccess(req, res)(args)
+      })
+
+      it('it sets the content type', () => {
+        expect(res.setHeader).toHaveBeenCalledWith('Content-Type', 'application/json')
+      })
+
+      it('sets the cache control header', () => {
+        expect(res.setHeader).toHaveBeenCalledWith('Cache-Control', 's-maxage=3600, maxage=3600')
+      })
+
+      it('sets the status', () => {
+        expect(res.status).toHaveBeenCalledWith(args.status || 200)
+      })
+
+      it('ends the response', () => {
+        expect(res.json).toHaveBeenCalledWith(body)
+      })
+    })
   })
 
-  it('it sets the content type', () => {
-    expect(res.setHeader).toHaveBeenCalledWith('Content-Type', 'application/json')
-  })
+  describe('when status is present', () => {
 
-  it('sets the cache control header', () => {
-    expect(res.setHeader).toHaveBeenCalledWith('Cache-Control', 's-maxage=3600, maxage=3600')
-  })
-
-  it('sets the status', () => {
-    expect(res.status).toHaveBeenCalledWith(200)
-  })
-
-  it('ends the response', () => {
-    expect(res.json).toHaveBeenCalledWith(body)
   })
 })
 

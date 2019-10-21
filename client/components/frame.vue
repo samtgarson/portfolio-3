@@ -2,7 +2,7 @@
   <div class="frame">
     <top-nav />
     <footer>
-      <a href="#">Get in touch</a>
+      <a href="#contact">Get in touch</a>
     </footer>
   </div>
 </template>

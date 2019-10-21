@@ -1,5 +1,4 @@
 const mailgun = require("mailgun-js")
-
 const { MAILGUN_API_KEY: apiKey, MAILGUN_DOMAIN: domain } = process.env
 const mg = mailgun({ apiKey, domain })
 
@@ -11,13 +10,13 @@ const send = data => new Promise((resolve, reject) => {
   })
 })
 
-module.exports = async ({ to, text, subject='New Portfolio Message' }) => {
+module.exports = async ({ email, text, name = 'an anonymous user' }) => {
   const data = { 
     from: 'Portfolio Postman <portfolio@mail.samgarson.com>', 
     to: 'sam@samgarson.com',
-    subject,
+    subject: `New message from ${name}`,
     text,
-    'h:Reply-To': to
+    'h:Reply-To': email
   }
 
   const result = await send(data)

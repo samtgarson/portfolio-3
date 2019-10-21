@@ -13,8 +13,8 @@ describe('send', () => {
   let result
   let error
   const body = {
-    to: 'to',
-    subject: 'subject',
+    email: 'email',
+    name: 'name',
     text: 'text'
   }
 
@@ -29,11 +29,11 @@ describe('send', () => {
   it('sends the email', () => {
     expect(mockSend).toHaveBeenCalledWith(
       {
-        from: 'portfolio@samgarson.com',
+        from: 'Portfolio Postman <portfolio@mail.samgarson.com>',
         to: 'sam@samgarson.com',
-        subject: body.subject,
+        subject: `New message from ${body.name}`,
         text: body.text,
-        'h:Reply-To': body.to
+        'h:Reply-To': body.email
       },
       expect.any(Function)
     )

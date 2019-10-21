@@ -10,5 +10,6 @@ module.exports = handler(() => getCheckin()
   .then(extractPlace)
   .then(fetchVenue)
   .then(constructCheckin)
+  .then(checkin => ({ body: checkin })
 )
 

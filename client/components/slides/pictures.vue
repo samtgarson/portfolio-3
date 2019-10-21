@@ -15,7 +15,9 @@
     </li>
     <li class="more">
       <a href="https://instagram.com/samtgarson">
+        See
         <span>More</span>
+        pictures
       </a>
     </li>
   </ul>
@@ -27,7 +29,7 @@ import { get } from 'axios'
 import Slide from '../slide'
 import RepeatText from '../repeat-text'
 
-const pictures = Array(6).fill({ loading: true })
+const pictures = Array(5).fill({ loading: true })
 
 export default {
   name: 'Pictures',
@@ -89,14 +91,18 @@ li {
 
   &.more a {
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
     border: 1px solid $dark;
     overflow: hidden;
+    font-style: italic;
 
     span {
       @include title;
       @include stretch($align: 'center');
+      line-height: 1em;
+      margin-bottom: 8px;
     }
 
     &:hover span {

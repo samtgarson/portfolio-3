@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     classForItem (i) {
-      return { center: i === Math.ceil(number / 2) }
+      return { center: i === Math.ceil(this.number / 2) }
     }
   }
 }

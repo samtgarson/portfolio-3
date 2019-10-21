@@ -23,7 +23,8 @@ export default {
     '@/assets/base.scss'
   ],
   plugins: [
-    { src: '@/plugins/raf', mode: 'client' }
+    { src: '@/plugins/raf', mode: 'client' },
+    { src: '@/plugins/recaptcha', mode: 'client' }
   ],
   modules: [
     '@nuxtjs/style-resources',
@@ -33,6 +34,10 @@ export default {
     loaders: {
       scss: customSass
     }
+  },
+  env: {
+    NODE_ENV: process.env.NODE_ENV,
+    recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
   },
   router: {
     base: process.env.PUBLIC_PATH || '/'

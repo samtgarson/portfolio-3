@@ -8269,6 +8269,11 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
+recaptcha-v3@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/recaptcha-v3/-/recaptcha-v3-1.7.0.tgz#64aefd1e161a8337c2266a0d4e4558d745592867"
+  integrity sha512-XnwNjLdw2nNOFUgFEM2thpvJzJdmJV4kmqZQXVH28G1+KhAzgrZnzrd5V0UnDuRsrXkrQUdP4aywqkDMEIE1Yw==
+
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.1.0.tgz#ef51e0f0ea4ad424b77bf7cb41f3e015c70a3f0e"
@@ -9901,6 +9906,13 @@ vue-no-ssr@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
+
+vue-recaptcha-v3@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/vue-recaptcha-v3/-/vue-recaptcha-v3-1.7.0.tgz#b683955597bdf53c4abd28fc70ccdf24ef5b3a7a"
+  integrity sha512-DCIrcMkThzkYKA1q50JZHuKhG6LezyBwus2xFg3WG6GDgkqf0P5WK6lpYZYtSsQ5qifyTKzIVUy9NMbZ1JzeBg==
+  dependencies:
+    recaptcha-v3 "^1.7.0"
 
 vue-router@~3.0.7:
   version "3.0.7"

@@ -1,7 +1,7 @@
-module.exports.respondSuccess = (req, res) => body => {
+module.exports.respondSuccess = (req, res) => ({ body = '', status = 200 } = {}) => {
   if (req.method === 'GET') res.setHeader('Cache-Control', 's-maxage=3600, maxage=3600')
   res.setHeader('Content-Type', 'application/json')
-  res.status(200)
+  res.status(status)
   res.json(body)
 }
 

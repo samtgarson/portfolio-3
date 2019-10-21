@@ -4,5 +4,6 @@ const extract = require('./lib/extract')
 
 module.exports = handler(async () => {
   const html = await fetchImages()
-  return extract(html)
+  const body = await extract(html)
+  return { body }
 })
