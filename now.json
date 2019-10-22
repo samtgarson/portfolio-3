@@ -17,6 +17,7 @@
   },
   "build": {
     "env": {
+      "NOW_BUILD": "true",
       "RECAPTCHA_SITE_KEY": "@recaptcha-site-key"
     }
   }, 

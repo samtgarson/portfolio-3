@@ -46,6 +46,6 @@ export default {
     scss: ['@/assets/vars.scss']
   },
   purgeCSS: {
-    enabled: ({ isDev, isClient }) => (!isDev && isClient)
+    enabled: ({ isClient }) => isClient && process.env.NOW_BUILD
   }
 }
