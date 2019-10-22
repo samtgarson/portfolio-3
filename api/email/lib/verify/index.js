@@ -5,7 +5,6 @@ const VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify'
 const allowedHost = host => {
   if (process.env.NODE_ENV !== 'production') return true
   if (host === 'samgarson.com') return true
-  if (host.match(/samtgarson1?\.now.sh$/)) return true
   return false
 }
 

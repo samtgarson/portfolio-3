@@ -2,9 +2,13 @@
 <slide id="contact" primary>
   <h1>Don't be a stranger.</h1>
   <form @submit.stop.prevent="sendForm">
-    <input v-model="name" type="text" placeholder="What should I call you" />
-    <input v-model="email" type="email" placeholder="Where should I email my reply to" />
-    <textarea v-model="text" placeholder="Dear Sam..." />
+    <label for="contact-name">What should I call you?</label>
+    <input id="contact-name" v-model="name" type="text" placeholder="" />
+
+    <label for="contact-email">Where should I email my reply to?</label>
+    <input id="contact-email" v-model="email" type="email" placeholder="" />
+    <label for="contact-text">Tell me something good</label>
+    <textarea id="contact-text" v-model="text" placeholder="Dear Sam..." />
     <button type="submit">Send it 👉</button>
   </form>
 </slide>
@@ -42,5 +46,15 @@ export default {
 h1 {
   @include title;
   @include stretch;
+}
+
+label {
+  @include dot($position: 'before');
+}
+
+input,
+textarea,
+button {
+  display: block;
 }
 </style>

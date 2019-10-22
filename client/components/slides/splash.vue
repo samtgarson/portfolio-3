@@ -49,6 +49,11 @@ export default {
   grid-area: 2 / 1 / 2 / 3;
   overflow-x: hidden;
   position: relative;
+  .repeat-text ::v-deep span {
+    @include small {
+      font-size: 1.4em;
+    }
+  }
 }
 
 img {
