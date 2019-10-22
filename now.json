@@ -17,7 +17,6 @@
   },
   "build": {
     "env": {
-      "NODE_ENV": "production",
       "RECAPTCHA_SITE_KEY": "@recaptcha-site-key"
     }
   }, 
