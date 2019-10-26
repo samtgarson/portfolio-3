@@ -1,5 +1,5 @@
 <template>
-<slide accent id="pictures" v-if="!failed">
+<slide bright id="pictures" v-if="!failed">
   <ul class="wrapper">
     <li
       v-for="picture in pictures"
@@ -94,9 +94,12 @@ li {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    border: 1px solid $dark;
     overflow: hidden;
     font-style: italic;
+
+    @include colour using ($text, $_) {
+      border: 1px solid $text;
+    }
 
     span {
       @include title;

@@ -1,8 +1,10 @@
+$font-size: 12px;
 $max-width: 900px;
 $base: #1502FF;
 $dark: darken($base, 20%);
 $white: #e7e7e5;
-$pink: #E576C6;
+$pink: #FE9189;
+$red: darken($pink, 20%);
 $padding: 30px;
 $font-family: "VulfSans", sans-serif;
 $small-breakpoint: 650px;
@@ -26,6 +28,10 @@ $stretch-factor: 1.2;
 
   #{selector('accent', $self)} {
     @content($dark, $pink);
+  }
+
+  #{selector('bright', $self)} {
+    @content($red, white);
   }
 }
 
@@ -114,3 +120,25 @@ $stretch-factor: 1.2;
   }
 }
 
+@mixin rise($delay: 0s, $stagger: 0.1s, $duration: 0.5s, $ease: 'ease-in-out') {
+  .rise-enter-active,
+  .rise-leave-active {
+    transition: transform #{$duration} #{$ease};
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        $transition-delay: $delay + ($i + $stagger);
+        @debug $transition-delay;
+        transition-delay: $transition-delay;
+      }
+    }
+  }
+
+  .rise-enter, .rise-leave-to {
+    transform: translateY(100%);
+  }
+
+  .rise-enter-to, .rise-leave {
+    transform: translateY(0);
+  }
+}

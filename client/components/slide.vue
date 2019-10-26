@@ -1,7 +1,7 @@
 <template>
-  <section class="slide" :class="{ primary, accent }">
+  <section class="slide" :class="{ primary, accent, bright }">
     <frame />
-    <article>
+    <article :class="{ fullscreen }">
       <slot />
     </article>
   </section>
@@ -15,6 +15,8 @@ export default {
   props: {
     primary: { type: Boolean, default: false },
     accent: { type: Boolean, default: false },
+    bright: { type: Boolean, default: false },
+    fullscreen: { type: Boolean, default: false }
   }
 }
 </script>
@@ -52,6 +54,13 @@ article {
     flex-direction: column;
     justify-content: center;
     padding: $padding;
+  }
+
+  &.fullscreen {
+    max-width: none;
+    max-height: none !important;
+    padding: 0;
+    justify-content: center;
   }
 }
 </style>

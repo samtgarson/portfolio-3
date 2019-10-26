@@ -29,10 +29,6 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 2fr;
 
-  @include big {
-    height: 100%;
-  }
-
   @include small {
     display: flex;
     align-items: center;
