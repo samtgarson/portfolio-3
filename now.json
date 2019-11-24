@@ -20,7 +20,7 @@
       "NOW_BUILD": "true",
       "RECAPTCHA_SITE_KEY": "@recaptcha-site-key"
     }
-  }, 
+  },
   "builds": [
     {
       "src": "client/package.json",
@@ -58,7 +58,7 @@
       "methods": ["POST"]
     },
     {
-      "src": "^/api/(where|insta)",
+      "src": "^/api/(where|insta|email)",
       "dest": "/api/$1/index.js",
       "methods": ["GET"]
     },

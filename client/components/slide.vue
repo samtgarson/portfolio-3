@@ -1,7 +1,7 @@
 <template>
   <section class="slide" :class="{ primary, accent, bright }">
     <frame />
-    <article :class="{ fullscreen }">
+    <article :class="{ fullscreen, centered }">
       <slot />
     </article>
   </section>
@@ -16,7 +16,8 @@ export default {
     primary: { type: Boolean, default: false },
     accent: { type: Boolean, default: false },
     bright: { type: Boolean, default: false },
-    fullscreen: { type: Boolean, default: false }
+    fullscreen: { type: Boolean, default: false },
+    centered: { type: Boolean, default: true }
   }
 }
 </script>
@@ -35,25 +36,39 @@ section {
   @include colour(true) using ($text, $bg) {
     color: $text;
     background-color: $bg;
+
+    input,
+    textarea {
+      color: $text;
+    }
   }
 }
 
 article {
   width: 100%;
   max-width: $max-width;
-  min-height: 100%;
   min-height: 400px;
   padding: $padding $padding*2;
-
-  @include big {
-    max-height: 450px + ($padding * 2);
-  }
+  margin: 15vh auto;
 
   @include small {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: $padding;
+    padding: $padding / 2;
+  }
+
+  &.centered {
+    margin: auto;
+    height: 100vh;
+
+    @include big {
+      max-height: $max-height;
+    }
+
+    @include small {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: $max-width * 0.75;
+    }
   }
 
   &.fullscreen {

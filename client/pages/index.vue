@@ -13,54 +13,55 @@ import About from '@/components/slides/about'
 import Pictures from '@/components/slides/pictures'
 import Contact from '@/components/slides/contact'
 
-const bus = createBus()
+//const bus = createBus()
 
 export default {
   data() {
     return {
       xMax: null,
       components: [Splash, About, Pictures, Contact],
-      touch: false
+      touch: true
     }
   },
   mounted() {
-    this.touch = touchDevice()
+    return
+    // this.touch = touchDevice()
 
-    if (this.touch) return
+    // if (this.touch) return
 
-    this.$once('hook:beforeDestroy', () => bus.stop())
+    // this.$once('hook:beforeDestroy', () => bus.stop())
 
-    bus.$on('resized', this.updateResize)
-    bus.$on('scrolled', this.updateScroll)
+    // bus.$on('resized', this.updateResize)
+    // bus.$on('scrolled', this.updateScroll)
 
-    bus.start(window)
+    // bus.start(window)
   },
   methods: {
-    updateResize() {
-      const slides = this.$el.querySelectorAll('.slide')
-      const lastSlide = slides[slides.length - 1]
-      
-      const page = this.$refs.main
-      const w = page.scrollWidth - window.innerWidth + window.innerHeight
-      document.body.style.height = w + 'px'
+    // updateResize() {
+    //   const slides = this.$el.querySelectorAll('.slide')
+    //   const lastSlide = slides[slides.length - 1]
 
-      this.xMax = lastSlide.getBoundingClientRect().left + window.scrollY
-      this.resized = false
-    },
-    updateScroll() {
-      const page = this.$refs.main
-      const y = document.body.getBoundingClientRect().top
-      page.scrollLeft = -y
+    //   const page = this.$refs.main
+    //   const w = page.scrollWidth - window.innerWidth + window.innerHeight
+    //   document.body.style.height = w + 'px'
 
-      // Looping Scroll.
-      const diff = window.scrollY - this.xMax
-      if (diff === 0) {
-        window.scrollTo(0, diff)
-      } else if (window.scrollY === 0) {
-        window.scrollTo(0, this.xMax)
-      }
-      this.scrolled = false
-    }
+    //   this.xMax = lastSlide.getBoundingClientRect().left + window.scrollY
+    //   this.resized = false
+    // },
+    // updateScroll() {
+    //   const page = this.$refs.main
+    //   const y = document.body.getBoundingClientRect().top
+    //   page.scrollLeft = -y
+
+    //   // Looping Scroll.
+    //   const diff = window.scrollY - this.xMax
+    //   if (diff === 0) {
+    //     window.scrollTo(0, diff)
+    //   } else if (window.scrollY === 0) {
+    //     window.scrollTo(0, this.xMax)
+    //   }
+    //   this.scrolled = false
+    // }
   }
 }
 </script>
@@ -77,6 +78,10 @@ main {
     right: 0;
     overflow: hidden;
     white-space: nowrap;
+
+    * {
+      white-space: normal;
+    }
   }
 }
 

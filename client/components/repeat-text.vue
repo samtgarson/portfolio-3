@@ -26,7 +26,7 @@ export default {
 p {
   margin: 0;
   white-space: nowrap;
-  overflow-y: hidden;
+  overflow-x: hidden;
 
   //@for $i from 0 through 5 {
   //  &:nth-child(#{$i + 1}) {
@@ -50,10 +50,16 @@ p {
   margin-right: $padding / 4;
   display: inline-block;
 
+  @include small {
+    font-size: 1.4em;
+  }
+
   .repeat-text.left &:first-child,
   .repeat-text.center &.center {
-    @include colour using ($text, $bg) {
-      color: $text;
+    @include title($stroke: false, $shadow: true);
+    font-size: 2em;
+    @include small {
+      font-size: 1.4em;
     }
   }
 }

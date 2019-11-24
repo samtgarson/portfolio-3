@@ -1,9 +1,12 @@
 $font-size: 12px;
-$max-width: 900px;
+$max-width: 1100px;
+$max-height: 550px;
 $base: #1502FF;
 $dark: darken($base, 20%);
 $white: #e7e7e5;
 $pink: #FE9189;
+$cyan: #39EEFE;
+$pale: #FFD9C1;
 $red: darken($pink, 20%);
 $padding: 30px;
 $font-family: "VulfSans", sans-serif;
@@ -31,7 +34,7 @@ $stretch-factor: 1.2;
   }
 
   #{selector('bright', $self)} {
-    @content($red, white);
+    @content($red, $pale);
   }
 }
 
@@ -101,11 +104,18 @@ $stretch-factor: 1.2;
   }
 }
 
-@mixin title {
+@mixin title($stroke: true, $shadow: false) {
   font-weight: bold;
   font-size: 3rem;
   text-transform: uppercase;
-  @include text-stroke;
+
+  @if $stroke {
+    @include text-stroke;
+  }
+
+  @if $shadow {
+    text-shadow: 3px 3px 0 $cyan;
+  }
 
   @include small {
     letter-spacing: 1px;
@@ -115,6 +125,7 @@ $stretch-factor: 1.2;
 
 @mixin stretch($align: 'left') {
   transform: scaleX($stretch-factor);
+  width: 100% / $stretch-factor;
   @if $align == 'left' {
     transform-origin: 0 50%;
   }
@@ -141,4 +152,19 @@ $stretch-factor: 1.2;
   .rise-enter-to, .rise-leave {
     transform: translateY(0);
   }
+}
+
+@mixin fluid-aspect($ratio: 1 1, $selector: "> :first-child", $margin: 0) {
+	$selector: unquote($selector);
+
+	padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+	position: relative;
+
+	#{$selector} {
+		left: $margin;
+		right: $margin;
+		position: absolute;
+		top: $margin;
+		bottom: $margin;
+	}
 }

@@ -67,7 +67,7 @@ h2 {
   }
 }
 
-.secondary { 
+.secondary {
   svg {
     margin-left: $padding / 2;
   }

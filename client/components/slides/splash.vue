@@ -5,9 +5,9 @@
         <img src="@/assets/img/sitting.svg"></img>
       </div>
       <div class="intro">
-        <repeat-text text="Tech Lead" />
-        <repeat-text text="Product Manager" :odd="false" />
-        <repeat-text text="Digital Strategy" />
+        <repeat-text text="Tell stories," />
+        <repeat-text text="have arguments" :odd="false" />
+        <repeat-text text="& build things" />
       </div>
     </div>
   </slide>
@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 2fr;
@@ -46,15 +47,12 @@ export default {
   overflow-x: hidden;
   position: relative;
   .repeat-text ::v-deep span {
-    @include small {
-      font-size: 1.4em;
-    }
   }
 }
 
 img {
   max-width: 100%;
-  max-height: 80%;
+  max-height: 90%;
 
   @include small {
     display: none;

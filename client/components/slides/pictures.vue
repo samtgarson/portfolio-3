@@ -1,5 +1,5 @@
 <template>
-<slide bright id="pictures" v-if="!failed">
+<slide bright :centered="false" id="pictures" v-if="!failed">
   <ul class="wrapper">
     <li
       v-for="picture in pictures"
@@ -10,7 +10,8 @@
         v-if="!picture.loading"
         :href="picture.url"
         :style="{ backgroundImage: `url(${picture.src})` }"
-        :title="picture.location"
+        title="picture.location"
+        target="_blank"
       ></a>
     </li>
     <li class="more">
@@ -29,7 +30,7 @@ import { get } from 'axios'
 import Slide from '../slide'
 import RepeatText from '../repeat-text'
 
-const pictures = Array(5).fill({ loading: true })
+const pictures = Array(4).fill({ loading: true })
 
 export default {
   name: 'Pictures',
@@ -41,7 +42,7 @@ export default {
   async mounted () {
     try {
       const { data } = await get('/api/insta')
-      this.pictures = data.slice(0, 5);
+      this.pictures = data.slice(0, 4);
     } catch (e) {
       this.failed = true
     }
@@ -51,42 +52,26 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  grid-auto-rows: 1fr;
   padding: 0;
-  margin: 0;
-  grid-column-gap: $padding / 2;
-  grid-row-gap: $padding / 2;
-
-  @include small {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-
-
-  &::before {
-    content: '';
-    width: 0;
-    padding-bottom: 100%;
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
-  } 
-
-  & > *:first-child {
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
-  }
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  max-width: 500px;
 }
 
 li {
   list-style-type: none;
-  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  @include fluid-aspect(1 1, a);
+
+  &:not(:last-child) {
+    margin-bottom: $padding;
+  }
 
   &:not(.more) {
     background-color: $white;
-  }
-
-  &.loading {
   }
 
   &.more a {
@@ -96,31 +81,31 @@ li {
     justify-content: center;
     overflow: hidden;
     font-style: italic;
+    text-align: center;
 
     @include colour using ($text, $_) {
       border: 1px solid $text;
+
+      &:hover span {
+        color: $text;
+      }
     }
 
     span {
-      @include title;
+      @include title($shadow: true);
       @include stretch($align: 'center');
       line-height: 1em;
       margin-bottom: 8px;
-    }
-
-    &:hover span {
-      color: $dark;
     }
   }
 }
 
 a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  display: block;
   background-size: cover;
-  text-decoration: none;
+
+  img {
+    width: 100%;
+  }
 }
 </style>
