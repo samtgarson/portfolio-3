@@ -1,5 +1,5 @@
 <template>
-<slide bright :centered="false" id="pictures" v-if="!failed">
+<slide pink :centered="false" id="pictures" v-if="!failed">
   <ul class="wrapper">
     <li
       v-for="picture in pictures"

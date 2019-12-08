@@ -1,5 +1,5 @@
 <template>
-  <section class="slide" :class="{ primary, accent, bright }">
+  <section class="slide" :class="{ primary, accent, pink, white }">
     <frame />
     <article :class="{ fullscreen, centered }">
       <slot />
@@ -15,8 +15,9 @@ export default {
   props: {
     primary: { type: Boolean, default: false },
     accent: { type: Boolean, default: false },
-    bright: { type: Boolean, default: false },
+    pink: { type: Boolean, default: false },
     fullscreen: { type: Boolean, default: false },
+    white: { type: Boolean, default: false },
     centered: { type: Boolean, default: true }
   }
 }
