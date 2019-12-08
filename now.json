@@ -13,7 +13,9 @@
     "NOTION_URL": "https://www.notion.so/samtgarson/7b02e22d86404179bafeeaa5c23b26cd?v=c22cc1a23cc34d4286532b840ed52dc6",
     "MAILGUN_DOMAIN": "mail.samgarson.com",
     "MAILGUN_API_KEY": "@mailgun-api-key",
-    "RECAPTCHA_SECRET_KEY": "@recaptcha-secret-key"
+    "RECAPTCHA_SECRET_KEY": "@recaptcha-secret-key",
+    "TWITTER_API_KEY": "@twitter-api-key",
+    "TWITTER_API_SECRET": "@twitter-api-secret"
   },
   "build": {
     "env": {
@@ -39,6 +41,10 @@
       "use": "@now/node"
     },
     {
+      "src": "api/tweets/index.ts",
+      "use": "@now/node"
+    },
+    {
       "src": "api/content/index.py",
       "use": "@now/python",
       "config": {
@@ -60,6 +66,11 @@
     {
       "src": "^/api/(where|insta|email)",
       "dest": "/api/$1/index.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "^/api/(tweets)",
+      "dest": "/api/$1/index.ts",
       "methods": ["GET"]
     },
     {

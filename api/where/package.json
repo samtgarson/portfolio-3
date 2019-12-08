@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "dependencies": {
     "@portfolio-3/utils": "0.0.1",

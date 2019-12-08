@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@now/node": "^1.2.0",
     "micro-cors": "^0.1.1"
   },
   "devDependencies": {
     "micro-morgan": "^0.1.0"
   }
 }
-
