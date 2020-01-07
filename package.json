@@ -6,10 +6,41 @@
     "client"
   ],
   "scripts": {
-    "test": "jest"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "build": "nuxt generate",
+    "dev": "nuxt",
+    "start": "nuxt start",
+    "test": "jest",
+    "now-dev": "yarn dev"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "nuxt": "^2.9.0",
+    "vue-feather-icons": "^5.0.0",
+    "vue-recaptcha-v3": "^1.7.0"
   },
   "devDependencies": {
-    "jest": "^24.7.1"
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "@nuxtjs/eslint-module": "^0.0.1",
+    "@nuxtjs/style-resources": "^0.1.2",
+    "@samtgarson/eslint-config": "^1.0.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-plugin-import": ">=2.16.0",
+    "eslint-plugin-jest": ">=22.3.0",
+    "eslint-plugin-node": ">=8.0.1",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "jest": "^24.7.1",
+    "modern-normalize": "^0.5.0",
+    "nodemon": "^1.18.9",
+    "nuxt-purgecss": "^0.2.1",
+    "sass": "^1.22.4",
+    "sass-loader": "^7.1.0"
+
   },
   "engines": {
     "node": "12.x"

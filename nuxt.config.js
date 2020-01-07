@@ -6,6 +6,7 @@ const customSass = {
 
 export default {
   mode: 'universal',
+  srcDir: 'client/',
   head: {
     title: 'Sam Garson',
     meta: [
