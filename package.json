@@ -1,9 +1,10 @@
 {
   "name": "portfolio-3",
   "private": true,
+  "version": "1.0.0-beta",
   "workspaces": [
     "api/**",
-    "client"
+    "./"
   ],
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
