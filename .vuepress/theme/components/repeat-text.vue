@@ -12,7 +12,7 @@ export default {
     text: { type: String, required: true },
     fill: { type: String, default: 'left' }
   },
-  data () { return { number: 0 } },
+  data () { return { number: 1 } },
   mounted () { this.number = 7 },
   methods: {
     classForItem (i) {

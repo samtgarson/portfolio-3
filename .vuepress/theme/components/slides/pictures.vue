@@ -30,16 +30,16 @@ import { get } from 'axios'
 import Slide from '../slide.vue'
 import RepeatText from '../repeat-text.vue'
 
-const pictures = Array(4).fill({ loading: true })
-
 export default {
   name: 'Pictures',
   components: { Slide, RepeatText },
   provide: {
     title: 'Pictures'
   },
-  data: () => ({ pictures, failed: false }),
+  data: () => ({ pictures: [], failed: false }),
   async mounted () {
+    this.pictures = Array(4).fill({ loading: true })
+
     try {
       const { data } = await get('/api/insta')
       this.pictures = data.slice(0, 4);
