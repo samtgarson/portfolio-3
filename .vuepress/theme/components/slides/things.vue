@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Slide from '../slide'
+import Slide from '../slide.vue'
 
 export default {
   name: 'Things',
@@ -20,6 +20,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/vars';
+
 h3 {
   @include title;
   @include stretch;

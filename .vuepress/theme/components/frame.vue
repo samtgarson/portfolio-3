@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import TopNav from './nav'
+import TopNav from './nav.vue'
 
 export default {
   components: { TopNav }
@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/vars';
+
 .frame {
   z-index: 100;
   clip: rect(0, auto, auto, 0);
@@ -59,7 +61,7 @@ footer {
     }
 
     @include small {
-      margin-right: $padding / 2; 
+      margin-right: $padding / 2;
     }
   }
 

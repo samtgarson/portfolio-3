@@ -2,7 +2,7 @@
   <slide id="splash" primary>
     <div class="wrapper">
       <div class="illustration">
-        <img src="@/assets/img/sitting.svg"></img>
+        <img src="../../assets/img/sitting.svg"></img>
       </div>
       <div class="intro">
         <repeat-text text="Tell stories," />
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Slide from '../slide'
-import RepeatText from '../repeat-text'
+import Slide from '../slide.vue'
+import RepeatText from '../repeat-text.vue'
 
 export default {
   name: 'Splash',
@@ -24,6 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/vars';
+
 .wrapper {
   height: 100%;
   display: grid;

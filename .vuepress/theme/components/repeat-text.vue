@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/vars';
+
 p {
   margin: 0;
   white-space: nowrap;

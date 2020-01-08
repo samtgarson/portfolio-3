@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Frame from './frame'
+import Frame from './frame.vue'
 
 export default {
   components: { Frame },
@@ -24,6 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/vars';
+
 section {
   min-height: 100vh;
   width: 100vw;

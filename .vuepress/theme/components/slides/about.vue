@@ -1,7 +1,7 @@
 <template>
 <slide id="about">
   <div class="wrapper">
-    <img src="@/assets/img/standing.svg" class="illustration"></img>
+    <img src="../../assets/img/standing.svg" class="illustration"></img>
     <div class="info">
       <h3>Hey there!</h3>
       <p>👋 Sam here. I'm a product focused tech lead in London, with a background in architecture and user experience, currently helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture and model to support them.</p>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Slide from '../slide'
+import Slide from '../slide.vue'
 
 export default {
   name: 'About',
@@ -26,6 +26,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/vars';
+
 h3 {
   @include title;
   @include stretch;

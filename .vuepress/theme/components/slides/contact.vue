@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Slide from '../slide'
+import Slide from '../slide.vue'
 import { post } from 'axios'
 
 export default {
@@ -62,6 +62,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/vars';
+
 h1 {
   @include title($stroke: false);
   @include stretch;

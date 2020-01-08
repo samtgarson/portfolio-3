@@ -27,8 +27,8 @@
 
 <script>
 import { get } from 'axios'
-import Slide from '../slide'
-import RepeatText from '../repeat-text'
+import Slide from '../slide.vue'
+import RepeatText from '../repeat-text.vue'
 
 const pictures = Array(4).fill({ loading: true })
 
@@ -51,6 +51,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/vars';
+
 .wrapper {
   padding: 0;
   margin: 0 auto;
