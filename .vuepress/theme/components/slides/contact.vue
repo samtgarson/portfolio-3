@@ -1,61 +1,41 @@
 <template>
 <slide :centered="false" id="contact" primary>
-  <h1>Don't be a stranger!</h1>
-  <div v-if="error">
-    <p>{{ error }}</p>
-    <button type="button" @click="error = false">Try again</button>
+  <div class="wrapper">
+    <h3>Don't be a stranger</h3>
+    <p><a href="mailto:sam@samgarson.com">sam@samgarson.com</a></p>
+    <p><a href="https://twitter.com/samtgarson">@samgarson</a></p>
+      <div v-if="checkin" class="checkin">
+        <p>
+          <MapPinIcon size="1x"/>
+          Last seen at
+          <a :href="checkin.url">
+            {{ checkin.place }}
+          </a>
+        </p>
+      </div>
+    </p>
   </div>
-  <form @submit.stop.prevent="sendForm" @input="sent = false" v-else>
-    <input id="contact-name" v-model="name" type="text" placeholder="Type your name." />
-    <input id="contact-email" v-model="email" type="email" placeholder="Type your email." />
-    <textarea id="contact-text" v-model="text" placeholder="Type your message." />
-    <button disabled v-if="sent">Thanks for your message! 🙌</button>
-    <button v-else type="submit">Send it 👉</button>
-  </form>
 </slide>
 </template>
 
 <script>
 import Slide from '../slide.vue'
-import { post } from 'axios'
+import { get } from 'axios'
+import { MapPinIcon } from 'vue-feather-icons'
 
 export default {
   name: 'Contact',
-  components: { Slide },
+  components: { Slide, MapPinIcon },
   provide: {
     title: 'Get in touch'
   },
-  data () {
-    return {
-      name: '',
-      email: '',
-      text: '',
-      error: null,
-      sent: false
-    }
-  },
-  methods: {
-    async sendForm () {
-      this.error = null
-      const token = await this.$recaptcha('sendContactForm')
-      const { name, email, text } = this
-      try {
-        const result = await post(
-          '/api/contact',
-          { name, email, text, token }
-        )
-        console.log(result)
-        this.reset()
-        this.sent = true
-      } catch (e) {
-        console.log(e)
-        this.error = 'Something went wrong...'
-      }
-    },
-    reset () {
-      this.name = ''
-      this.email = ''
-      this.text = ''
+  data () { return { checkin: null } },
+  async mounted () {
+    try {
+      const { data } = await get('/api/where')
+      this.checkin = data
+    } catch (e) {
+      console.error(e)
     }
   }
 }
@@ -64,49 +44,31 @@ export default {
 <style scoped lang="scss">
 @import '../../assets/vars';
 
-h1 {
-  @include title($stroke: false);
+.wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+h3 {
+  @include title($stroke: true, $shadow: true);
   @include stretch;
+  font-size: 1.2em;
   margin-bottom: $padding;
 }
 
-input,
-textarea,
-button {
-  display: block;
-  border: 0;
-  border-radius: 0;
-  background-color: transparent;
-  padding: 0;
-  outline: none;
-  font-weight: inherit;
-  line-height: inherit;
-  font-size: 3rem !important;
-
-  @include colour using ($text, $_) {
-    color: $text;
-  }
+.checkin {
+  margin-top: $padding * 2;
 }
 
-input,
-textarea {
-  width: 100%;
-  border-bottom: 1px solid white;
-  margin-bottom: $padding;
-
-  &::placeholder,
-  &::-webkit-input-placeholder {
-    @include title($shadow: true);
-  }
+.feather-map-pin {
+  vertical-align: middle;
 }
 
-textarea {
-  height: 200px;
-}
-
-button {
-  @include dot($position: 'before', $circle-size: 0.4em) using ($circle-size) {
-    margin-right: $padding;
-  }
-}
 </style>

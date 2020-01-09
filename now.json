@@ -25,15 +25,11 @@
   },
   "builds": [
     {
-      "src": "./package.json",
+      "src": "package.json",
       "use": "@now/static-build"
     },
     {
       "src": "api/where/index.js",
-      "use": "@now/node"
-    },
-    {
-      "src": "api/email/index.js",
       "use": "@now/node"
     },
     {

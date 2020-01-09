@@ -53,6 +53,7 @@ article {
   min-height: 400px;
   padding: $padding $padding*2;
   margin: 15vh auto;
+  position: relative;
 
   @include small {
     padding: $padding / 2;
